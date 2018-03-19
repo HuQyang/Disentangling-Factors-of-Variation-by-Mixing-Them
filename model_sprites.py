@@ -73,12 +73,12 @@ class DCGAN(object):
         
         self.abstract_size = self.sample_size // 2 ** 4
 
-        images, _ = get_pipeline_training_from_dump('/scratch/qhu/sprites_train_pose/sprites_train.tfrecords',
+        _,_,images= get_pipeline_training_from_dump('data_example.tfrecords',
                                                                  self.batch_size*3,
                                                                  1000, image_size=60,resize_size=60,
                                                                  img_channels=self.c_dim)
 
-        test_images1,_ = get_pipeline_training_from_dump('/scratch/qhu/sprites_test/sprites_test.tfrecords',
+        _,_,test_images1 = get_pipeline_training_from_dump('data_example.tfrecords',
                                                                  self.batch_size*2,
                                                                  10000000, image_size=60,resize_size=60,
                                                                  img_channels=self.c_dim)

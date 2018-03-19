@@ -27,23 +27,25 @@ def preprocess(image_tensor, img_size,resize_size, whiten=True, color=False,
 def read_tensor_record(filename_queue, img_size, resize_size,img_channels,grayscale):
   reader = tf.TFRecordReader()
   _, serialized_example = reader.read(filename_queue)
+
   features = tf.parse_single_example(
       serialized_example,
-      features={'image': tf.FixedLenFeature([], tf.string),
-                'imageR': tf.FixedLenFeature([], tf.string)})
+      features={'angle': tf.FixedLenFeature([], tf.string),
+                'angle1': tf.FixedLenFeature([], tf.string),
+                'image': tf.FixedLenFeature([], tf.string)})
+
+  angle = tf.decode_raw(features['angle'],tf.float32)
+  angle.set_shape([1])
+
+  angle1 = tf.decode_raw(features['angle1'],tf.float32)
+  angle1.set_shape([1])
 
   image = tf.decode_raw(features['image'], tf.uint8)
   image.set_shape([img_size * img_size * img_channels])
-  
   is_color_img = img_channels == 3
-
   image = preprocess(image, img_size,resize_size,whiten=True, color=is_color_img,grayscale=grayscale)
-
-  imageR = tf.decode_raw(features['imageR'], tf.uint8)
-  imageR.set_shape([img_size * img_size * img_channels])
-  imageR = preprocess(imageR, img_size,resize_size,
-                      whiten=True, color=is_color_img,grayscale=grayscale)
-  return  image,imageR
+  
+  return  angle,angle1,image
 
 
 def get_pipeline_training_from_dump(dump_file, batch_size, epochs,
