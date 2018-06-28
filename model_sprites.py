@@ -267,9 +267,9 @@ class DCGAN(object):
         self.c_lr = tf.train.exponential_decay(0.0002, global_step=global_step,
                                                decay_steps=20000, decay_rate=0.9, staircase=True)
 
-        
+        labmda = 0
 
-        g_loss = 10*self.rec_loss+10*self.recR_loss +10*self.rec_mix_loss+1*self.g_loss+1*self.cf_loss
+        g_loss = lambda*self.rec_loss+10*self.recR_loss +10*self.rec_mix_loss+1*self.g_loss+1*self.cf_loss
 
         g_optim = tf.train.AdamOptimizer(learning_rate=self.g_lr, beta1=config.beta1) \
                           .minimize(g_loss, var_list=self.g_vars)
