@@ -120,7 +120,8 @@ class DCGAN(object):
 
             self.feaR = tf.where(tf.equal(k[0]*a_chunk,1),t1,e1)
             self.fea_mixR = self.feaR
-
+    
+            # mix the feature
             for i in xrange(1,self.chunk_num):
                 t1 = self.rep[:,i*self.chunk_size:(i+1)*self.chunk_size]
                 e1 = self.repR[:,i*self.chunk_size:(i+1)*self.chunk_size]
@@ -267,7 +268,7 @@ class DCGAN(object):
         self.c_lr = tf.train.exponential_decay(0.0002, global_step=global_step,
                                                decay_steps=20000, decay_rate=0.9, staircase=True)
 
-        labmda = 0
+        labmda = 0 
 
         g_loss = lambda*self.rec_loss+10*self.recR_loss +10*self.rec_mix_loss+1*self.g_loss+1*self.cf_loss
 
