@@ -36,11 +36,7 @@ class DCGAN(object):
 
         self.image_shape = image_shape
         self.image_size = image_shape[0]
-
-        self.y_dim = y_dim
-        self.z_dim = z_dim
-        self.z = None
-
+        
         self.gf_dim = gf_dim
         self.df_dim = df_dim
 
@@ -68,8 +64,6 @@ class DCGAN(object):
 
 
     def build_model(self, is_train):
-        if self.y_dim:
-            self.y = tf.placeholder(tf.float32, [None, self.y_dim], name='y')
         
         self.abstract_size = self.sample_size // 2 ** 4
 
