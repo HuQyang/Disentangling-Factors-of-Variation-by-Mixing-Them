@@ -4,7 +4,7 @@ http://openaccess.thecvf.com/content_cvpr_2018/papers/Hu_Disentangling_Factors_o
 
 One can also find the codes, the tfrecords and the trained model for CelebA dataset here : 
 
-https://drive.google.com/drive/folders/1izQIPMeNmkLfQioZfZGtlUUJ0us1WKs_
+https://drive.google.com/drive/folders/1izQIPMeNmkLfQioZfZGtlUUJ0us1WKs_?usp=sharing
 
 
 
