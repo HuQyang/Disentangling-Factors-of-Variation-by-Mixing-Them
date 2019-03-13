@@ -6,6 +6,8 @@ One can also find the codes, the tfrecords and the trained model for CelebA data
 
 https://drive.google.com/open?id=1izQIPMeNmkLfQioZfZGtlUUJ0us1WKs_
 
+https://drive.google.com/open?id=1izQIPMeNmkLfQioZfZGtlUUJ0us1WKs_
+
 
 
 
